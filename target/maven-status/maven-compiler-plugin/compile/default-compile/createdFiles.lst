@@ -1,0 +1,16 @@
+cl\ipchile\gestiondeuniversidad\entity\Course.class
+cl\ipchile\gestiondeuniversidad\entity\Department.class
+cl\ipchile\gestiondeuniversidad\service\StudentService.class
+cl\ipchile\gestiondeuniversidad\entity\Professor.class
+cl\ipchile\gestiondeuniversidad\servlet\CourseServlet.class
+cl\ipchile\gestiondeuniversidad\service\DepartmentService.class
+cl\ipchile\gestiondeuniversidad\service\ProfessorService.class
+cl\ipchile\gestiondeuniversidad\entity\Student.class
+cl\ipchile\gestiondeuniversidad\service\CourseService.class
+cl\ipchile\gestiondeuniversidad\service\DegreeService.class
+cl\ipchile\gestiondeuniversidad\servlet\DegreeServlet.class
+cl\ipchile\gestiondeuniversidad\servlet\DepartmentServlet.class
+cl\ipchile\gestiondeuniversidad\entity\Degree.class
+cl\ipchile\gestiondeuniversidad\JakartaRestConfiguration.class
+cl\ipchile\gestiondeuniversidad\servlet\ProfessorServlet.class
+cl\ipchile\gestiondeuniversidad\servlet\StudentServlet.class
