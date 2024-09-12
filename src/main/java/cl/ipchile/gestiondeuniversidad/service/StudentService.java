@@ -8,7 +8,7 @@ import java.util.List;
 @Singleton
 public class StudentService {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "Persistencia")
     private EntityManager em;
 
     public void createStudent(Student student) {

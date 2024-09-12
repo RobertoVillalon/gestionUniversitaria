@@ -17,6 +17,15 @@ public class CourseServlet extends HttpServlet {
     private CourseService courseService;
 
     @Override
+    public void init() throws ServletException {
+        super.init();
+        // Asegúrate de que la inyección haya sido realizada correctamente
+        if (courseService == null) {
+            throw new ServletException("courseService no inyectado correctamente");
+        }
+    }
+    
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // List all courses

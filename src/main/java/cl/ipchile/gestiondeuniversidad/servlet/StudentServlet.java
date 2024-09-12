@@ -29,8 +29,8 @@ public class StudentServlet extends HttpServlet {
             throws ServletException, IOException {
         // Create a new student
         String name = request.getParameter("name");
-        String lastNameP = request.getParameter("lastNameP");
-        String lastNameM = request.getParameter("lastNameM");
+        String lastNameP = request.getParameter("firstLastName");
+        String lastNameM = request.getParameter("secondLastName");
         String rut = request.getParameter("rut");
         int age = Integer.parseInt(request.getParameter("age"));
         String email = request.getParameter("email");
