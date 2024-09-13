@@ -49,14 +49,14 @@ public class Degree implements Serializable {
         this.name = name;
     }
 
-    public Department getDepartament() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartament(Department department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
-
+    
     public String getDegreeBoss() {
         return degreeBoss;
     }
