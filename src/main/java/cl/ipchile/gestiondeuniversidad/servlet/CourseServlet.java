@@ -36,7 +36,7 @@ public class CourseServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        
+                
         if(action.equals("create")){
             List<Course> courses = courseService.getAllCourses();
             List<Degree> degrees = degreeService.getAllDegrees();
@@ -54,6 +54,15 @@ public class CourseServlet extends HttpServlet {
             request.setAttribute("courses", courses);
 
             request.getRequestDispatcher("/studentByCourse.jsp").forward(request, response); 
+        }else if(action.equals("studentCourse")){
+                    System.out.println("si entra");
+
+            Long studentId = Long.valueOf(request.getParameter("studentId"));
+
+            List<Course> courses = courseService.findCoursesByStudent(studentId);
+
+            request.setAttribute("courses", courses);
+            request.getRequestDispatcher("/coursesByStudent.jsp").forward(request, response);
         }
 
     }
@@ -100,6 +109,8 @@ public class CourseServlet extends HttpServlet {
             courseService.updateCourse(course);
 
             response.sendRedirect("course?action=assign");
+        }else if(action.equals("studentCourse")){
+            
         }
 
         

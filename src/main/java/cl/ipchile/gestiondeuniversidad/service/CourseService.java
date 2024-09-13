@@ -34,4 +34,10 @@ public class CourseService {
             em.remove(course);
         }
     }
+    
+    public List<Course> findCoursesByStudent(Long studentId) {
+        return em.createQuery("SELECT c FROM Course c JOIN c.students s WHERE s.id = :studentId", Course.class)
+                 .setParameter("studentId", studentId)
+                 .getResultList();
+    }
 }

@@ -74,6 +74,7 @@
                     <th>Age</th>
                     <th>Email</th>
                     <th>Degree</th>
+                    <th>Courses</th>
                 </tr>
             </thead>
             <tbody>
@@ -86,6 +87,13 @@
                         <td>${student.age}</td>
                         <td>${student.email}</td>
                         <td>${student.degree.name}</td>
+                        <td>
+                            <form action="course" method="get">
+                                <input type="hidden" name="action" value="studentCourse" />
+                                <input type="hidden" name="studentId" value="${student.id}"/>
+                                <button type="submit" class="btn btn-primary">View Courses</button>
+                            </form>
+                        </td>
                     </tr>
                 </c:forEach>
             </tbody>
