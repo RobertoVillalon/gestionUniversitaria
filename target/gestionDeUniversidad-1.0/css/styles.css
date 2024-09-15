@@ -1,0 +1,183 @@
+
+body {
+    
+    background-color: #d0d6db;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.card-header {
+    font-weight: bold;
+}
+
+.card-body {
+    font-size: 1.1rem;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.form-text {
+    font-size: 0.9rem;
+}
+
+.pagination {
+    justify-content: center;
+}
+h2 {
+    font-size: 2rem;
+    color: #333; /* Asegúrate de que el color sea visible */
+    margin-bottom: 20px;
+}
+h1 {
+    font-size: 2rem;
+    color: #333; /* Asegúrate de que el color sea visible */
+    margin-bottom: 20px;
+}
+
+/* Estilo del navbar estilo GitHub oscuro */
+.navbar-custom {
+    background-color: #24292e;
+    border-bottom: 1px solid #444d56;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 0;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Tipografía más profesional */
+    font-weight: bold;
+    margin-left: 20px; /* Más hacia la izquierda */
+}
+
+.navbar-nav .nav-link {
+    font-size: 0.9rem; /* Tamaño más pequeño */
+    color: #cdd9e5 !important;
+    padding: 8px 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #79b8ff !important;
+}
+
+/* Estilo de la barra lateral más pequeña */
+.sidebar {
+    height: 100%;
+    width: 180px;
+    position: fixed;
+    top: 56px; /* Ajustado para estar justo debajo del navbar */
+    left: 0;
+    background-color: #24292e;
+    border-right: 1px solid #444d56;
+    padding-top: 20px;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.sidebar a {
+    padding: 8px 15px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    color: #cdd9e5;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #2f363d;
+    color: #79b8ff;
+}
+
+/* Ajustes de contenido */
+
+
+
+
+.container-custom {
+    margin-top: 70px; /* Ajusta la posición del contenido debajo del navbar */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ocultar la barra lateral */
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.content.collapsed {
+    margin-left: 60px;
+}
+
+/* Botón de toggle para ocultar/mostrar sidebar */
+#sidebarToggle {
+    position: fixed;
+    top: 70px;
+    left: 190px;
+    background-color: #0366d6;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: left 0.3s ease-in-out;
+}
+
+#sidebarToggle.collapsed {
+    left: 70px;
+}
+
+.alert-success {
+    display: none; /* Oculta el mensaje de éxito al cargar la página */
+}
+
+/* Asegurar que el contenido esté centrado y alineado */
+.content {
+    margin-left: 200px; /* Ajuste según el ancho de la sidebar */
+    margin-right: 20px;
+    padding-top: 70px; /* Ajuste para evitar colisión con el navbar */
+}
+
+.form-container {
+    max-width: 900px; /* Ajusta el tamaño del formulario */
+    margin: 0 auto; /* Centra el formulario */
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group .form-control {
+    max-width: 48%; /* Ajusta los campos para estar alineados dos por fila */
+}
+
+/* Validaciones del RUT */
+.invalid-feedback {
+    display: none;
+}
+
+.mr-auto {
+
+}

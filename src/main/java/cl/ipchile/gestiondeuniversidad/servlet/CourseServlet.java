@@ -36,33 +36,56 @@ public class CourseServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        List<Course> courses;
+        List<Degree> degrees;
+        List<Student> students;
+        
+        switch (action) {
+            case "create":     
+                courses = courseService.getAllCourses();
+                degrees = degreeService.getAllDegrees();
+                List<Professor> professors = professorService.getAllProfessors();
+                request.setAttribute("courses", courses);
+                request.setAttribute("degrees", degrees);
+                request.setAttribute("professors", professors);
+                request.getRequestDispatcher("/pages/course/createCourse.jsp").forward(request, response);
+            break;
+            case "view":
+                courses = courseService.getAllCourses();
+                request.setAttribute("courses", courses);
                 
-        if(action.equals("create")){
-            List<Course> courses = courseService.getAllCourses();
-            List<Degree> degrees = degreeService.getAllDegrees();
-            List<Professor> professors = professorService.getAllProfessors();
+                request.getRequestDispatcher("/pages/course/showCourses.jsp").forward(request, response);
+            break;
+            case "assign":    
+                students = studentService.getAllStudents();
+                request.setAttribute("students", students);
+                courses = courseService.getAllCourses();
+                request.setAttribute("courses", courses);
+                request.getRequestDispatcher("/pages/course/assignCourseToStudent.jsp").forward(request, response);
+            break;
+            case "students":
+                String courseId = request.getParameter("courseId");
 
-            request.setAttribute("courses", courses);
-            request.setAttribute("degrees", degrees);
-            request.setAttribute("professors", professors);
+                 try {
+                    // Obtener el curso por ID
+                    Course course = courseService.getCourse(Long.valueOf(courseId));
 
-            request.getRequestDispatcher("/courses.jsp").forward(request, response); 
-        }else if(action.equals("assign")){
-            List<Student> students = studentService.getAllStudents();
-            request.setAttribute("students", students);
-            List<Course> courses = courseService.getAllCourses();
-            request.setAttribute("courses", courses);
+                    // Obtener los estudiantes inscritos en el curso
+                    students = studentService.getStudentsByCourse(Long.valueOf(courseId));
 
-            request.getRequestDispatcher("/studentByCourse.jsp").forward(request, response); 
-        }else if(action.equals("studentCourse")){
-                    System.out.println("si entra");
+                    // Enviar el curso y los estudiantes como atributos al JSP
+                    request.setAttribute("course", course);
+                    request.setAttribute("students", students);
 
-            Long studentId = Long.valueOf(request.getParameter("studentId"));
-
-            List<Course> courses = courseService.findCoursesByStudent(studentId);
-
-            request.setAttribute("courses", courses);
-            request.getRequestDispatcher("/coursesByStudent.jsp").forward(request, response);
+                    // Redirigir al JSP studentsByCourse.jsp
+                    request.getRequestDispatcher("/pages/course/showStudentByCourse.jsp").forward(request, response);
+                } catch (NumberFormatException e) {
+                    // Manejar error si el ID del curso no es válido
+                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID del curso no válido.");
+                }
+            break;
+            default:
+                break;
         }
 
     }
@@ -109,9 +132,22 @@ public class CourseServlet extends HttpServlet {
             courseService.updateCourse(course);
 
             response.sendRedirect("course?action=assign");
-        }else if(action.equals("studentCourse")){
+        }else if(action.equals("deleteStudent")){
+                
+            Student student = studentService.getStudent(Long.valueOf(request.getParameter("studentId")));
+            Course course = courseService.getCourse(Long.valueOf(request.getParameter("courseId")));
             
+            courseService.removeStudentFromCourse(student, course);
+
+            response.sendRedirect("course?action=view");
+        }else if(action.equals("deleteAllStudent")){
+            Course course = courseService.getCourse(Long.valueOf(request.getParameter("courseId")));
+            
+            courseService.removeAllStudentFromCourse(course);
+
+            response.sendRedirect("course?action=view");
         }
+        
 
         
     }

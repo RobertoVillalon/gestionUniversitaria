@@ -35,9 +35,8 @@ public class StudentService {
     }
     
     public List<Student> getStudentsByCourse(Long courseId) {
-        return em.createQuery(
-                "SELECT s FROM Student s JOIN s.courses c WHERE c.id = :courseId", Student.class)
-                .setParameter("courseId", courseId)
-                .getResultList();
+        return em.createNativeQuery("SELECT s.* FROM Student s JOIN student_course sc ON s.id = sc.id_student WHERE sc.id_course = ?", Student.class)
+        .setParameter(1, courseId)
+        .getResultList();
     }
 }
