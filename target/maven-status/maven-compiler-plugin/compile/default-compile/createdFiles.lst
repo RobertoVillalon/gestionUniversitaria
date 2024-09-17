@@ -1,0 +1,10 @@
+cl\ipchile\gestiondeuniversidad\service\DegreeServiceTest.class
+DegreeTest.class
+cl\ipchile\gestiondeuniversidad\service\ProfessorServiceTest.class
+ProfessorTest.class
+cl\ipchile\gestiondeuniversidad\service\DepartmentServiceTest.class
+StudentTest.class
+cl\ipchile\gestiondeuniversidad\service\CourseServiceTest.class
+cl\ipchile\gestiondeuniversidad\service\StudentServiceTest.class
+CourseTest.class
+DepartmentTest.class
